@@ -25,31 +25,7 @@ class App extends Component {
    }
  }
 
- async getDataForInterval() {
-   this.setState({is_30_second_pass : false})
-   console.log("get_data_for_interval")
-   let req;
-   try {
-     req = await fetch("https://content.guardianapis.com/search?api-key=3811404c-4fff-44c6-b717-46c36d3e15ca&show-fields=thumbnail&page=1")
-     const result_json = await req.json()
-     const tempdata = result_json.response.results
-     if (tempdata[0].id === this.state.data[0].id){
-       console.log("no need for update")
-     }else{
-       console.log("upadate needed")
-       const {data} = this.state;
-       tempdata.map(elem => {
-            data.push(elem)
-        })
-        this.setState({data})
-     }
-     console.log(this.state.page)
-     console.log(this.state.data)
-  }catch (e){
-    alert(e.message)
-  }
-}
-
+ 
   componentDidMount(){
     setInterval(function(){
     }, 2000);
